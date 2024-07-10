@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
+    credentials: true,
     origin: "*", // can add link on github website
     optionsSuccessStatus: 200,
 };
@@ -569,3 +570,8 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
+/*
+ */
+/*
+ */
