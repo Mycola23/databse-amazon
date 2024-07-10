@@ -4,11 +4,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin: "https://github.com/Mycola23",
+    origin: "*", // can add link on github website
     optionsSuccessStatus: 200,
 };
 
-app.use(cors({ origin: "*" })); // we can do iton our pet project but on real better be no repeat this because we`ll have great problems with control
+app.use(cors(corsOptions)); // we can do iton our pet project but on real better be no repeat this because we`ll have great problems with control
 
 const products = [
     {
