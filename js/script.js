@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const corsOptions = {
     credentials: true,
-    origin: "*",
+    origin: "http://127.0.0.1:5503/",
     optionsSuccessStatus: 200,
 };
 
