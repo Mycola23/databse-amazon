@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const corsOptions = {
     credentials: true,
-    origin: "*", // can add link on github website
+    origin: "*",
     optionsSuccessStatus: 200,
 };
 
@@ -569,7 +569,7 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-module.exports = app;
+//module.exports = app;
 
 /*
  */
