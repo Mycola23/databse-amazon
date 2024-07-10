@@ -560,6 +560,9 @@ const products = [
 app.get("/js/data", (req, res) => {
     res.json(products);
 });
+app.get("/", (req, res) => {
+    res.json("gggg");
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
