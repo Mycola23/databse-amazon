@@ -9,7 +9,10 @@
     "routes": [
         {
             "src": "/js/data",
-            "dest": "/js/script.js"
+            "dest": "/js/script.js",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
         }
     ]
 }

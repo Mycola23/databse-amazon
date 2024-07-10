@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin: "http://127.0.0.1:5503",
+    origin: "*",
 };
 
 app.use(cors(corsOptions)); // we can do iton our pet project but on real better be no repeat this because we`ll have great problems with control
