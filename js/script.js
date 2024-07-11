@@ -556,18 +556,19 @@ const products = [
     },
 ];
 
-app.get("/js/data", (req, res) => {
-    res.json(products);
-});
 app.get("/", (req, res) => {
-    res.json("gggg");
+    res.json({ message: "Welcome to the product API" });
+});
+app.get("/js/data", (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.json(products);
 });
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-//module.exports = app;
+module.exports = app;
 
 /*
  */
