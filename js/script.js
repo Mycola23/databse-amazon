@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 const corsOptions = {
     origin: "*",
 };
-
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
     res.append("Access-Control-Allow-Origin", ["*"]);
     res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
