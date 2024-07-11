@@ -7,7 +7,12 @@ const corsOptions = {
     origin: "*",
 };
 
-app.use(cors(corsOptions)); // we can do iton our pet project but on real better be no repeat this because we`ll have great problems with control
+app.use((req, res, next) => {
+    res.append("Access-Control-Allow-Origin", ["*"]);
+    res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    res.append("Access-Control-Allow-Headers", "Content-Type");
+    next();
+}); // we can do iton our pet project but on real better be no repeat this because we`ll have great problems with control
 
 const products = [
     {
@@ -560,7 +565,6 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the product API" });
 });
 app.get("/js/data", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://mycola23.github.io/amazon_site/");
     res.json(products);
 });
 
