@@ -564,9 +564,6 @@ const products = [
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the product API" });
 });
-app.get("/", (req, res) => {
-    res.render("index.html");
-});
 app.get("/js/data", (req, res) => {
     res.json(products);
 });
