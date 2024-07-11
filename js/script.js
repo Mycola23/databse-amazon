@@ -562,7 +562,7 @@ const products = [
 ];
 
 app.get("/", (req, res) => {
-    res.status(200).json({ message: "Welcome to my server!" });
+    res.json({ message: "Welcome to the product API" });
 });
 app.get("/js/data", (req, res) => {
     res.json(products);
