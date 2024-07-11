@@ -560,7 +560,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the product API" });
 });
 app.get("/js/data", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://mycola23.github.io/amazon_site/");
     res.json(products);
 });
 
