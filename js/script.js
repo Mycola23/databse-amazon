@@ -572,7 +572,7 @@ app.post("/orders", (req, res) => {
     try {
         const receivedData = req.body;
         if (!Array.isArray(receivedData)) {
-            return res.status(400).json({ error: "Invalid data format" });
+            return res.status(400).json({ error: "Invalid data format" + `${receivedData}` });
         }
 
         let totalCostCents = 0;
