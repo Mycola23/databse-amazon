@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
+const { v4: uuidv4 } = require("uuid");
 
 const corsOptions = {
     origin: "*",
@@ -566,6 +567,49 @@ app.get("/", (req, res) => {
 app.get("/js/data", (req, res) => {
     res.json(products);
 });
+//let ddd = null;
+app.post("/orders", (req, res) => {
+    const recievedData = req.body;
+    const TotalCostCents = 0;
+    const orderId = uuidv4();
+    const date = new Date();
+    const estimatedDeliveryTime = new Date();
+    const products = [];
+    recievedData.forEach((product) => {
+        let deliveryPrice = 0;
+        switch (product.deliveryOptionId) {
+            case "1":
+                deliveryPrice = 0;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 7);
+                product.estimatedDeliveryTime = estimatedDeliveryTime;
+                break;
+
+            case "2":
+                deliveryPrice = 499;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 3);
+                product.estimatedDeliveryTime = estimatedDeliveryTime;
+                break;
+            case "3":
+                deliveryPrice = 999;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 1);
+                product.estimatedDeliveryTime = estimatedDeliveryTime;
+                break;
+        }
+        TotalCostCents += product.price * product.quantity + deliveryPrice;
+        products.push(product);
+    });
+    const order = {
+        id: orderId,
+        date: date,
+        TotalCostCents: TotalCostCents,
+        products: products,
+    };
+    res.json(order);
+    ///ddd = recievedData
+});
+/* app.get('/orders',(res,req)=>{
+    res.json(ddd || 0);
+}) */
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
