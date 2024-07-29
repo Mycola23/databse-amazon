@@ -569,7 +569,58 @@ app.get("/js/data", (req, res) => {
 });
 let orderTestAnswer = null;
 app.post("/orders", (req, res) => {
-    const recievedData = req.body;
+    try {
+        const receivedData = req.body;
+        if (!Array.isArray(receivedData)) {
+            return res.status(400).json({ error: "Invalid data format" });
+        }
+
+        let totalCostCents = 0;
+        const orderId = uuidv4();
+        const date = new Date();
+        const products = [];
+
+        receivedData.forEach((product) => {
+            let deliveryPrice = 0;
+            let estimatedDeliveryTime = new Date(); // Reset date for each product
+
+            switch (product.deliveryOptionId) {
+                case "1":
+                    deliveryPrice = 0;
+                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 7);
+                    break;
+                case "2":
+                    deliveryPrice = 499;
+                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 3);
+                    break;
+                case "3":
+                    deliveryPrice = 999;
+                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 1);
+                    break;
+                default:
+                    return res.status(400).json({ error: "Invalid delivery option" });
+            }
+
+            product.estimatedDeliveryTime = estimatedDeliveryTime;
+
+            totalCostCents += product.price * product.quantity + deliveryPrice;
+            products.push(product);
+        });
+
+        const order = {
+            id: orderId,
+            date: date,
+            totalCostCents: totalCostCents,
+            products: products,
+        };
+
+        res.json(order);
+    } catch (error) {
+        console.error("Error processing POST /orders:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+
+    /* const recievedData = req.body;
     let TotalCostCents = 0;
     const orderId = uuidv4();
     const date = new Date();
@@ -606,7 +657,7 @@ app.post("/orders", (req, res) => {
         products: products,
     };
     orderTestAnswer = order;
-    res.json(order);
+    res.json(order); */
 });
 app.get("/orders", (res, req) => {
     res.json(orderTestAnswer || 0);
