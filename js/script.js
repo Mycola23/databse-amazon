@@ -567,16 +567,17 @@ app.get("/", (req, res) => {
 app.get("/js/data", (req, res) => {
     res.json(products);
 });
-//let ddd = null;
+let orderTestAnswer = null;
 app.post("/orders", (req, res) => {
     const recievedData = req.body;
-    const TotalCostCents = 0;
+    let TotalCostCents = 0;
     const orderId = uuidv4();
     const date = new Date();
-    const estimatedDeliveryTime = new Date();
+
     const products = [];
     recievedData.forEach((product) => {
         let deliveryPrice = 0;
+        let estimatedDeliveryTime = new Date();
         switch (product.deliveryOptionId) {
             case "1":
                 deliveryPrice = 0;
@@ -604,12 +605,12 @@ app.post("/orders", (req, res) => {
         TotalCostCents: TotalCostCents,
         products: products,
     };
+    orderTestAnswer = order;
     res.json(order);
-    ///ddd = recievedData
 });
-/* app.get('/orders',(res,req)=>{
-    res.json(ddd || 0);
-}) */
+app.get("/orders", (res, req) => {
+    res.json(orderTestAnswer || 0);
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
