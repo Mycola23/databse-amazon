@@ -570,7 +570,7 @@ app.get("/js/data", (req, res) => {
 let orderTestAnswer = null;
 app.post("/orders", (req, res) => {
     try {
-        const receivedData = req.body;
+        const receivedData = JSON.parse(req.body);
         if (!Array.isArray(receivedData)) {
             return res.status(400).json({ error: "Invalid data format" + `${receivedData}` });
         }
