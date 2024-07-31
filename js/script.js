@@ -573,11 +573,11 @@ app.post("/orders", (req, res) => {
 
     console.log(receivedData);
 
-    /* let totalCostCents = 0;
+    let totalCostCents = 0;
     const orderId = uuidv4();
     const date = new Date();
     const products = [];
-
+    /*
     receivedData.forEach((product) => {
         let deliveryPrice = 0;
         let estimatedDeliveryTime = new Date(); // Reset date for each product
@@ -613,6 +613,10 @@ app.post("/orders", (req, res) => {
     }; */
     let testData = {
         receivedData,
+        totalCostCents,
+        orderId,
+        date,
+        products,
     };
     res.json(testData);
 
