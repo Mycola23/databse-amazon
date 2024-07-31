@@ -570,49 +570,47 @@ app.get("/js/data", (req, res) => {
 let orderTestAnswer = null;
 app.post("/orders", (req, res) => {
     const receivedData = req.body;
-    /* if (!Array.isArray(receivedData)) {
-        return res.status(400).json({ error: "Invalid data format" + `${receivedData}` });
-    } */
+
     console.log(receivedData);
     res.json(receivedData);
-    /* let totalCostCents = 0;
-        const orderId = uuidv4();
-        const date = new Date();
-        const products = [];
+    let totalCostCents = 0;
+    const orderId = uuidv4();
+    const date = new Date();
+    const products = [];
 
-        receivedData.forEach((product) => {
-            let deliveryPrice = 0;
-            let estimatedDeliveryTime = new Date(); // Reset date for each product
+    receivedData.forEach((product) => {
+        let deliveryPrice = 0;
+        let estimatedDeliveryTime = new Date(); // Reset date for each product
 
-            switch (product.deliveryOptionId) {
-                case "1":
-                    deliveryPrice = 0;
-                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 7);
-                    break;
-                case "2":
-                    deliveryPrice = 499;
-                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 3);
-                    break;
-                case "3":
-                    deliveryPrice = 999;
-                    estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 1);
-                    break;
-                default:
-                    return res.status(400).json({ error: "Invalid delivery option" });
-            }
+        switch (product.deliveryOptionId) {
+            case "1":
+                deliveryPrice = 0;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 7);
+                break;
+            case "2":
+                deliveryPrice = 499;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 3);
+                break;
+            case "3":
+                deliveryPrice = 999;
+                estimatedDeliveryTime.setDate(estimatedDeliveryTime.getDate() + 1);
+                break;
+            default:
+                return res.status(400).json({ error: "Invalid delivery option" });
+        }
 
-            product.estimatedDeliveryTime = estimatedDeliveryTime;
+        product.estimatedDeliveryTime = estimatedDeliveryTime;
 
-            totalCostCents += product.price * product.quantity + deliveryPrice;
-            products.push(product);
-        });
+        totalCostCents += product.price * product.quantity + deliveryPrice;
+        products.push(product);
+    });
 
-        const order = {
-            id: orderId,
-            date: date,
-            totalCostCents: totalCostCents,
-            products: products,
-        }; */
+    const order = {
+        id: orderId,
+        date: date,
+        totalCostCents: totalCostCents,
+        products: products,
+    };
 
     /*  } catch (error) {
         console.error("Error processing POST /orders:", error);
