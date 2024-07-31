@@ -574,6 +574,7 @@ app.post("/orders", (req, res) => {
         if (!Array.isArray(receivedData)) {
             return res.status(400).json({ error: "Invalid data format" + `${receivedData}` });
         }
+        console.log(receivedData);
 
         let totalCostCents = 0;
         const orderId = uuidv4();
