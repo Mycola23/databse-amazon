@@ -615,7 +615,7 @@ app.post("/orders", (req, res) => {
             products: products,
         };
 
-        res.json(order);
+        res.json(receivedData);
     } catch (error) {
         console.error("Error processing POST /orders:", error);
         res.status(500).json({ error: "Internal Server Error" + `${receivedData}` });
