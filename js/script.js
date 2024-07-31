@@ -573,7 +573,7 @@ app.post("/orders", (req, res) => {
 
     console.log(receivedData);
 
-    let totalCostCents = 0;
+    /* let totalCostCents = 0;
     const orderId = uuidv4();
     const date = new Date();
     const products = [];
@@ -603,15 +603,18 @@ app.post("/orders", (req, res) => {
 
         totalCostCents += product.price * product.quantity + deliveryPrice;
         products.push(product);
-    });
+    }); */
 
-    const order = {
+    /* const order = {
         id: orderId,
         date: date,
         totalCostCents: totalCostCents,
         products: products,
+    }; */
+    let testData = {
+        receivedData,
     };
-    res.json(order);
+    res.json(testData);
 
     /*  } catch (error) {
         console.error("Error processing POST /orders:", error);
