@@ -577,8 +577,8 @@ app.post("/orders", (req, res) => {
     const orderId = uuidv4();
     const date = new Date();
     const products = [];
-    /*
-    receivedData.forEach((product) => {
+
+    receivedData["cart"].forEach((product) => {
         let deliveryPrice = 0;
         let estimatedDeliveryTime = new Date(); // Reset date for each product
 
@@ -603,7 +603,7 @@ app.post("/orders", (req, res) => {
 
         totalCostCents += product.price * product.quantity + deliveryPrice;
         products.push(product);
-    }); */
+    });
 
     /* const order = {
         id: orderId,
