@@ -576,7 +576,7 @@ app.post("/orders", (req, res) => {
         }
         console.log(receivedData);
 
-        let totalCostCents = 0;
+        /* let totalCostCents = 0;
         const orderId = uuidv4();
         const date = new Date();
         const products = [];
@@ -613,7 +613,7 @@ app.post("/orders", (req, res) => {
             date: date,
             totalCostCents: totalCostCents,
             products: products,
-        };
+        }; */
 
         res.json(receivedData);
     } catch (error) {
