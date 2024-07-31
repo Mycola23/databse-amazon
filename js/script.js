@@ -611,7 +611,7 @@ app.post("/orders", (req, res) => {
         totalCostCents: totalCostCents,
         products: products,
     }; */
-    let testData = {
+    const testData = {
         receivedData,
         totalCostCents,
         orderId,
