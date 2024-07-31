@@ -572,7 +572,7 @@ app.post("/orders", (req, res) => {
     const receivedData = req.body;
 
     console.log(receivedData);
-    res.json(receivedData);
+
     let totalCostCents = 0;
     const orderId = uuidv4();
     const date = new Date();
@@ -611,6 +611,7 @@ app.post("/orders", (req, res) => {
         totalCostCents: totalCostCents,
         products: products,
     };
+    res.json(order);
 
     /*  } catch (error) {
         console.error("Error processing POST /orders:", error);
