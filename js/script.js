@@ -569,10 +569,10 @@ app.get("/js/data", (req, res) => {
 });
 let orderTestAnswer = null;
 app.post("/orders", (req, res) => {
-    const receivedData = JSON.parse(req.body);
-    if (!Array.isArray(receivedData)) {
+    const receivedData = req.body;
+    /* if (!Array.isArray(receivedData)) {
         return res.status(400).json({ error: "Invalid data format" + `${receivedData}` });
-    }
+    } */
     console.log(receivedData);
     res.json(receivedData);
     /* let totalCostCents = 0;
