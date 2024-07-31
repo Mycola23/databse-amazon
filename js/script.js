@@ -605,20 +605,14 @@ app.post("/orders", (req, res) => {
         products.push(product);
     });
 
-    /* const order = {
+    const order = {
+        receivedData,
         id: orderId,
         date: date,
         totalCostCents: totalCostCents,
         products: products,
-    }; */
-    const testData = {
-        receivedData,
-        totalCostCents,
-        orderId,
-        date,
-        products,
     };
-    res.json(testData);
+    res.json(order);
 
     /*  } catch (error) {
         console.error("Error processing POST /orders:", error);
